@@ -9,6 +9,7 @@ function createWindow() {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: true,
     },
   });
 
@@ -18,21 +19,12 @@ function createWindow() {
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 }
-function c_str(text) {
-  return Buffer.from(text + "\0", "ucs2");
-}
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow();
-
-  const ffi = require("ffi-napi");
-  const lib = new ffi.Library("user32", {
-    MessageBoxW: ["int32", ["int32", "string", "string", "int32"]],
-  });
-  lib.MessageBoxW(0, c_str("test"), c_str("from js"), 0);
 
   app.on("activate", function () {
     // On macOS it's common to re-create a window in the app when the

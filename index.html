@@ -14,7 +14,30 @@
   We are using Node.js <span id="node-version"></span>,
   Chromium <span id="chrome-version"></span>,
   and Electron <span id="electron-version"></span>.
+  <button onclick="window.close()">close</button>
+  <button onclick="maximize()">max</button>
+  <button onclick="minimize()">min</button>
+  <script>
+    function c_str(text) {
+      return Buffer.from(text + "\0", "ucs2");
+    }
+    const ffi = require("ffi-napi");
+    const lib = new ffi.Library("user32", {
+      MessageBoxW: ["int32", ["int32", "string", "string", "int32"]],
+    });
+    lib.MessageBoxW(0, c_str("test"), c_str("from js"), 0);
 
+    const electron = require('electron');
+    const currentWindow = electron.remote.getCurrentWindow();
+
+    function maximize() {
+      currentWindow.maximize();
+    }
+
+    function minimize() {
+      currentWindow.minimize();
+    }
+  </script>
   <!-- You can also require other files to run in this process -->
   <script src="./renderer.js"></script>
 </body>
