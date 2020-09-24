@@ -5,3 +5,9 @@ npm install
 npm intall electron-builder
 npm start
 ```
+
+###单元测试
+
+```shell
+npm run test
+```
