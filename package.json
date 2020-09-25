@@ -30,10 +30,11 @@
     },
     "extraResources": [
       {
-          "from":"./libs",
-          "to":"../libs"
+        "from": "./libs",
+        "to": "../libs"
       }
-  ]
+    ],
+    "asar": true
   },
   "author": "GitHub",
   "license": "CC0-1.0",

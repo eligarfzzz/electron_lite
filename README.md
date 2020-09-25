@@ -51,3 +51,13 @@ npm i -g node-gyp-build
 `from`的`./`代表项目根目录，
 
 但是`to`的`./`代表`resources`目录，如果使用`./libs`,最后实际路径为`/resources/libs`，而非`.exe`所在的`/libs`，如果加载额外的`dll`会导致无法找到文件。所以这里使用`../libs`，确保摆放到正确位置。
+
+## asar
+
+```js
+"build":{
+     "asar": true
+}
+```
+
+是否使用`asar`压缩
