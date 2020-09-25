@@ -7,7 +7,7 @@
   <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
   <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
   <title>Hello World!</title>
-
+  <script src="./renderer.js"></script>
 </head>
 
 <body>
@@ -15,14 +15,24 @@
   We are using Node.js <span id="node-version"></span>,
   Chromium <span id="chrome-version"></span>,
   and Electron <span id="electron-version"></span>.
-  <button onclick="window.close()">close</button>
-  <button onclick="maximize()">max</button>
-  <button onclick="minimize()">min</button>
+  <!-- electron导出测试 -->
+  <div>
+    <button onclick="window.close()">close</button>
+    <button onclick="maximize()">max</button>
+    <button onclick="minimize()">min</button>
+  </div>
 
-  <!-- You can also require other files to run in this process -->
-  <script src="./renderer.js"></script>
+  <!-- dll函数测试 -->
+  <div>
+    <p>
+      <script>document.write(lib.fnffitest())</script>
+    </p>
+  </div>
+
+  <img src="./img/90q.png" />
+
   <script>
-    lib.MessageBoxW(0, c_str("test"), c_str("from js"), 0);
+    // lib.MessageBoxW(0, c_str("test"), c_str("from js"), 0);
   </script>
 </body>
 

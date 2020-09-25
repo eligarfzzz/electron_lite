@@ -4,13 +4,17 @@
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
 // process.
+
+// ffi模块函数导出
 function c_str(text) {
   return Buffer.from(text + "\0", "ucs2");
 }
 const ffi = require("ffi-napi");
-const lib = new ffi.Library("user32", {
-  MessageBoxW: ["int32", ["int32", "string", "string", "int32"]],
+const lib = new ffi.Library("./libs/ffitest.dll", {
+  fnffitest: ["int32", []],
 });
+
+// electron模块函数导出
 function getCurrentWidnow() {
   return require("electron").remote.getCurrentWindow();
 }

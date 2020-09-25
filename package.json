@@ -27,12 +27,19 @@
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "installerIcon": "icon.ico"
-    }
+    },
+    "extraResources": [
+      {
+          "from":"./libs",
+          "to":"../libs"
+      }
+  ]
   },
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^6.0.10",
+    "electron-builder": "^22.8.1",
     "mocha": "^5.0.1"
   },
   "dependencies": {
