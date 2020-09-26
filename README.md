@@ -9,10 +9,17 @@
 ## 使用
 
 ```shell
-npm install
-npm intall electron-builder
-npm start
+npm install #安装依赖
+npm start #启动应用
 ```
+
+## 打包
+
+```shell
+npm run build
+```
+
+
 
 ## 单元测试
 
@@ -22,14 +29,14 @@ npm run test
 
 如果出现以下错误
 
-```powershell
+```shell
 errorOut='node-gyp-build' is not recognized as an internal or external command,
     operable program or batch file.
 ```
 
 尝试`npm`安装`node-gyp-build`模块
 
-```powershell
+```shell
 npm i -g node-gyp-build
 ```
 

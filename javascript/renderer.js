@@ -26,5 +26,13 @@ function maximize() {
 function minimize() {
   getCurrentWidnow().minimize();
 }
+function maxUnmaxWindow(){
+  const curwin = getCurrentWidnow();
+  if(curwin.isMaximized()){
+    curwin.unmaximize();
+  }else{
+    curwin.maximize();
+  }
+}
 exports.lib = lib;
 exports.c_str = c_str;

@@ -1,39 +1,186 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="UTF-8">
-  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
   <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
-  <title>Hello World!</title>
-  <script src="./renderer.js"></script>
-</head>
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="./javascript/renderer.js"></script>
+  </head>
 
-<body>
-  <h1>Hello World!</h1>
-  We are using Node.js <span id="node-version"></span>,
-  Chromium <span id="chrome-version"></span>,
-  and Electron <span id="electron-version"></span>.
-  <!-- electron导出测试 -->
-  <div>
-    <button onclick="window.close()">close</button>
-    <button onclick="maximize()">max</button>
-    <button onclick="minimize()">min</button>
-  </div>
+  <body>
+    <div class="window_title_bar">
+      <!-- 左上角logo区域 -->
+      <div class="logo_icon content_center">
+        <img class="logo_icon_img" src="./img/like.png" alt="" />
+      </div>
+      <!-- 菜单区域 -->
+      <div class="menu_bar">
+        <div class="menu_button h_gy">
+          文件
+          <ul class="menu_list">
+            <li>
+              <a href="#"
+                >打开文件<span class="right_item_text">ctrl + c</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                >打开文件夹<span class="right_item_text">ctrl + v</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                >打开工作区<span class="right_item_text">ctrl + b</span></a
+              >
+            </li>
+            <div class="split"></div>
+            <li><a href="#">设定</a></li>
+          </ul>
+        </div>
+        <div class="menu_button h_gy">
+          编辑
+          <ul class="menu_list">
+            <li>
+              <a href="#"
+                >打开文件<span class="right_item_text">ctrl + c</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                >打开文件夹<span class="right_item_text">ctrl + v</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                >打开工作区<span class="right_item_text">ctrl + b</span></a
+              >
+            </li>
+            <div class="split"></div>
+            <li><a href="#">设定</a></li>
+          </ul>
+        </div>
 
-  <!-- dll函数测试 -->
-  <div>
-    <p>
-      <script>document.write(lib.fnffitest())</script>
-    </p>
-  </div>
+        <div class="menu_button h_gy">
+          帮助
+          <ul class="menu_list">
+            <li>
+              <a href="#"
+                >打开文件<span class="right_item_text">ctrl + c</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                >打开文件夹<span class="right_item_text">ctrl + v</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                >打开工作区<span class="right_item_text">ctrl + b</span></a
+              >
+            </li>
+            <div class="split"></div>
+            <li><a href="#">设定</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- 标题文字区域 -->
+      <div class="title_text content_center">zzzz</div>
+      <!-- 窗口按钮区域 -->
+      <div class="window_buttons">
+        <!-- 最小化 -->
+        <a onclick="minimize()" class="win_btn h_gy content_center">
+          <div class="svg_icon">
+            <svg
+              t="1601098701517"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="3708"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs>
+                <style type="text/css"></style>
+              </defs>
+              <path
+                d="M98.23 451.003l829.685-1.992 0.154 64-829.685 1.992z"
+                p-id="3709"
+              ></path>
+            </svg>
+          </div>
+        </a>
+        <!-- 最大化 -->
+        <a onclick="maxUnmaxWindow()" class="win_btn h_gy content_center">
+          <div class="svg_icon">
+            <svg
+              t="1601098743030"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="4527"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs>
+                <style type="text/css"></style>
+              </defs>
+              <path
+                d="M204.8 256a51.2 51.2 0 0 0-51.2 51.2v409.6a51.2 51.2 0 0 0 51.2 51.2h614.4a51.2 51.2 0 0 0 51.2-51.2V307.2a51.2 51.2 0 0 0-51.2-51.2H204.8z m0-51.2h614.4a102.4 102.4 0 0 1 102.4 102.4v409.6a102.4 102.4 0 0 1-102.4 102.4H204.8a102.4 102.4 0 0 1-102.4-102.4V307.2a102.4 102.4 0 0 1 102.4-102.4z"
+                p-id="4528"
+              ></path>
+            </svg>
+          </div>
+        </a>
+        <!-- 关闭 -->
+        <a onclick="window.close()" class="win_btn h_rd content_center">
+          <div class="svg_icon">
+            <svg
+              t="1601098645021"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="3128"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs>
+                <style type="text/css"></style>
+              </defs>
+              <path
+                d="M566.97558594 521.09667969L856.8828125 231.18945312c14.63378906-14.63378906 14.63378906-38.75976563 0-53.39355468l-1.58203125-1.58203125c-14.63378906-14.63378906-38.75976563-14.63378906-53.39355469 0L512 466.51660156 222.09277344 176.21386719c-14.63378906-14.63378906-38.75976563-14.63378906-53.39355469 0l-1.58203125 1.58203125c-15.02929688 14.63378906-15.02929688 38.75976563 0 53.39355469l289.90722656 289.90722656L167.1171875 811.00390625c-14.63378906 14.63378906-14.63378906 38.75976563 0 53.39355469l1.58203125 1.58203125c14.63378906 14.63378906 38.75976563 14.63378906 53.39355469 0L512 576.07226563 801.90722656 865.97949219c14.63378906 14.63378906 38.75976563 14.63378906 53.39355469 0l1.58203125-1.58203125c14.63378906-14.63378906 14.63378906-38.75976563 0-53.39355469L566.97558594 521.09667969z"
+                p-id="3129"
+              ></path>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+    <h1>Hello World!</h1>
+    We are using Node.js <span id="node-version"></span>, Chromium
+    <span id="chrome-version"></span>, and Electron
+    <span id="electron-version"></span>.
+    <!-- electron导出测试 -->
+    <div>
+      <button onclick="window.close()">close</button>
+      <button onclick="maximize()">max</button>
+      <button onclick="minimize()">min</button>
+    </div>
 
-  <img src="./img/90q.png" />
+    <!-- dll函数测试 -->
+    <div>
+      <p>
+        ffi dll export test：
+        <span>
+          <script>
+            document.write(lib.fnffitest());
+          </script>
+        </span>
+      </p>
+    </div>
 
-  <script>
-    // lib.MessageBoxW(0, c_str("test"), c_str("from js"), 0);
-  </script>
-</body>
-
+    <img src="./img/90q.png" />
+  </body>
 </html>
