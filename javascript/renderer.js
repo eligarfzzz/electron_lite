@@ -26,13 +26,20 @@ function maximize() {
 function minimize() {
   getCurrentWidnow().minimize();
 }
-function maxUnmaxWindow(){
+function maxUnmaxWindow() {
   const curwin = getCurrentWidnow();
-  if(curwin.isMaximized()){
+  if (curwin.isMaximized()) {
     curwin.unmaximize();
-  }else{
+  } else {
     curwin.maximize();
   }
 }
-exports.lib = lib;
-exports.c_str = c_str;
+
+// 模块导出，方便测试。
+// html作为script标签引入时无法导出
+try {
+  exports.lib = lib;
+  exports.c_str = c_str;
+} catch (error) {
+  console.log("model exports skipped");
+}
