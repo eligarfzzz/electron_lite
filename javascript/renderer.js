@@ -41,5 +41,5 @@ try {
   exports.lib = lib;
   exports.c_str = c_str;
 } catch (error) {
-  console.log("model exports skipped");
+  console.warn("Model exports skipped.");
 }
