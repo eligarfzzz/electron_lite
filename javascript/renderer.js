@@ -38,6 +38,7 @@ function maxUnmaxWindow() {
 // 模块导出，方便测试。
 // html作为script标签引入时无法导出
 try {
+  console.log("exports");
   exports.lib = lib;
   exports.c_str = c_str;
 } catch (error) {
